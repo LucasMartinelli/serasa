@@ -1,0 +1,51 @@
+<nav
+  class="sidebar"
+  [ngClass]="{
+    openState: openState
+  }"
+  (mouseenter)="changeOpenStateDesktop()"
+  (mouseleave)="changeOpenStateDesktop()"
+>
+  <header>
+    <div class="logoContainer">
+      <img
+        src="../../../../assets/img/logo-short.png"
+        alt="Logo-Short"
+        class="logoIcon"
+        *ngIf="!openState"
+      />
+      <img
+        src="../../../../assets/img/logo-long.png"
+        alt="Logo-Long"
+        class="logoText"
+        *ngIf="openState"
+      />
+    </div>
+  </header>
+
+  <div class="menuList">
+    <span
+      class="menuList__title"
+      [ngClass]="{ 'menuList__title--closed': !openState }"
+      >Gestão</span
+    >
+    <button
+      mat-button
+      [ngClass]="{ openStateBtn: !openState }"
+      [routerLink]="['/vendedores']"
+      routerLinkActive="menuList__btn--active"
+    >
+      <span class="material-icons-outlined"> people </span>
+      Vendedores
+    </button>
+    <button
+      mat-button
+      [ngClass]="{ openStateBtn: !openState }"
+      [routerLink]="['/atuacao']"
+      routerLinkActive="menuList__btn--active"
+    >
+      <span class="material-icons-outlined"> place </span>
+      Atuação
+    </button>
+  </div>
+</nav>

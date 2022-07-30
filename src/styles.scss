@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("./assets/css/normalize.css");
+@import "./assets/css/theme.scss";
+
+// GENERAL -----------------
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+// LAYOUT -----------------
+
+::-webkit-scrollbar {
+  width: 5px;
+  transition: 200ms ease all !important;
+  cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00000023;
+  border-radius: 3px;
+  transition: 200ms ease all !important;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00000043;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #e63888;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(0.5rem, 3vw, 1rem) clamp(1rem, 5vw, 2rem);
+}
+
+.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.basePage {
+  height: 100%;
+  padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 32px) !important;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.33), 0 0px 15px rgba(0, 0, 0, 0.05);
+  //min-height: 200px;
+  animation: pageFadeIn 0.5s ease both;
+}
+
+.pageTitle {
+  padding-left: 5px;
+  color: #636363;
+  animation: titleFadeIn 0.5s ease both;
+  font-size: clamp(20px, 5vw, 24px) !important;
+  .material-icons-outlined {
+    font-size: clamp(22px, 5vw, 24px) !important;
+    animation: titleIconFadeIn 0.23s ease both;
+    animation-delay: 200ms;
+    margin-right: 1px;
+  }
+}
