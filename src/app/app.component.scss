@@ -1,9 +1,12 @@
 main {
   background-color: #f8f8f8;
   height: 100vh;
+  width: calc(100vw - 80px);
   margin-left: 80px;
   transition: 100ms all ease;
   box-sizing: border-box;
+  position: relative;
+  padding-right: clamp(15px, 7vw, 300px);
   .overlay {
     position: fixed;
     top: 0;
@@ -16,10 +19,11 @@ main {
   }
 }
 
-.mainContent {
-  padding: clamp(15px, 3vw, 100px);
-  padding-right: clamp(15px, 3vw, 62px);
+.main-content {
+  position: relative;
+  padding: clamp(15px, 7vw, 300px);
+  padding-right: 0;
+  padding-left: clamp(15px, 5vw, 300px);
   padding-top: 90px;
-  max-width: 1280px;
   transition: 200ms ease all;
 }

@@ -54,26 +54,70 @@ a {
 .cols-2 {
   grid-template-columns: repeat(2, 1fr);
 }
+.page-wrapper {
+  position: absolute;
+  width: calc(100vw - 80px - clamp(30px, 10vw, 600px));
+  min-height: calc(100vh - 90px - clamp(30px, 10vw, 600px));
 
-.basePage {
-  height: 100%;
-  padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 32px) !important;
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.33), 0 0px 15px rgba(0, 0, 0, 0.05);
-  //min-height: 200px;
-  animation: pageFadeIn 0.5s ease both;
+  .basePage {
+    height: 100%;
+    padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 32px) !important;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.33),
+      0 0px 15px rgba(0, 0, 0, 0.05);
+    //min-height: 200px;
+  }
+
+  .pageTitle {
+    padding-left: 5px;
+    color: #636363;
+    animation: titleFadeIn 0.5s ease both;
+    animation-delay: 400ms;
+    font-size: clamp(20px, 6vw, 28px) !important;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 32px;
+    .material-icons-outlined {
+      font-size: clamp(22px, 5vw, 24px) !important;
+      animation: titleIconFadeIn 0.23s ease both;
+      animation-delay: 600ms;
+      margin-right: 1px;
+      transform: translate(0, 5px);
+      color: #aaa;
+    }
+  }
+}
+// ANIMATIONS -----------------
+// @keyframes pageFadeIn {
+//   0% {
+//     transform: scale(0.985);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: scale(1);
+//     opacity: 1;
+//   }
+// }
+
+@keyframes titleFadeIn {
+  0% {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.pageTitle {
-  padding-left: 5px;
-  color: #636363;
-  animation: titleFadeIn 0.5s ease both;
-  font-size: clamp(20px, 5vw, 24px) !important;
-  .material-icons-outlined {
-    font-size: clamp(22px, 5vw, 24px) !important;
-    animation: titleIconFadeIn 0.23s ease both;
-    animation-delay: 200ms;
-    margin-right: 1px;
+@keyframes titleIconFadeIn {
+  0% {
+    transform: scale(1.7) translate(0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translate(0, 4px);
+    opacity: 1;
   }
 }

@@ -1,6 +1,9 @@
 <app-sidebar></app-sidebar>
 <main>
-  <section class="main-content">
-    <router-outlet></router-outlet>
+  <section
+    class="main-content"
+    [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''"
+  >
+    <router-outlet #outlet="outlet"></router-outlet>
   </section>
 </main>

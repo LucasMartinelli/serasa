@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,12 +7,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   openState = false;
+  animationState = false;
+  mouseEventState = false;
 
   constructor() {}
 
   ngOnInit() {}
 
-  changeOpenStateDesktop() {
-    this.openState = !this.openState;
+  changeOpenStateDesktop(event) {
+    if (this.animationState === false) {
+      if (
+        (event.type === 'mouseleave' && this.openState === false) ||
+        (event.type === 'click' && this.openState === false)
+      ) {
+        return;
+      }
+      this.openState = !this.openState;
+      this.animationState = true;
+      setTimeout(() => (this.animationState = false), 150);
+    }
   }
 }

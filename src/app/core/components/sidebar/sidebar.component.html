@@ -3,8 +3,8 @@
   [ngClass]="{
     openState: openState
   }"
-  (mouseenter)="changeOpenStateDesktop()"
-  (mouseleave)="changeOpenStateDesktop()"
+  (mouseenter)="changeOpenStateDesktop($event)"
+  (mouseleave)="changeOpenStateDesktop($event)"
 >
   <header>
     <div class="logoContainer">
@@ -34,6 +34,7 @@
       [ngClass]="{ openStateBtn: !openState }"
       [routerLink]="['/vendedores']"
       routerLinkActive="menuList__btn--active"
+      (click)="changeOpenStateDesktop($event)"
     >
       <span class="material-icons-outlined"> people </span>
       Vendedores
@@ -43,6 +44,7 @@
       [ngClass]="{ openStateBtn: !openState }"
       [routerLink]="['/atuacao']"
       routerLinkActive="menuList__btn--active"
+      (click)="changeOpenStateDesktop($event)"
     >
       <span class="material-icons-outlined"> place </span>
       Atuação
