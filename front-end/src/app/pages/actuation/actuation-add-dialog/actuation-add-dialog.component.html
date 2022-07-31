@@ -1,20 +1,20 @@
-<h2 mat-dialog-title>
-  <span style="color: darkred; margin-left: 7px"
-    >Cadastrar Área de Atuação</span
-  >
-</h2>
-<mat-dialog-content class="mat-typography">
-  <p>Tem certeza que deseja inativar este produto?</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-stroked-button mat-dialog-close>Cancelar</button>
-  <button mat-flat-button color="warn" [mat-dialog-close]="1">
-    <span
-      class="material-icons-outlined"
-      style="margin-top: -3px; margin-right: 5px; font-size: 21px"
-    >
-      delete
-    </span>
-    Inativar Produto
-  </button>
-</mat-dialog-actions>
+<article class="actuation-add">
+  <form class="actuationForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Região</mat-label>
+      <input type="text" matInput formControlName="regiao" />
+      <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estados</mat-label>
+      <mat-select formControlName="estados" multiple>
+        <mat-option *ngFor="let estado of estados" [value]="estado.value">{{
+          estado.viewValue
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</article>

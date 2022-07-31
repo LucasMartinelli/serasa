@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "atuacao")
 @EqualsAndHashCode
 public class Actuation implements Serializable {
 
