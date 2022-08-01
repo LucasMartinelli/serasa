@@ -1,0 +1,25 @@
+.basePage {
+  mat-divider {
+    margin-top: 32px;
+    animation: slideDownFadeIn 700ms ease both;
+    animation-delay: 300ms;
+  }
+  .btn-row {
+    display: flex;
+    justify-content: center;
+    padding: 32px;
+    margin-top: 16px;
+    animation: slideDownFadeIn 800ms ease both;
+  }
+}
+
+@keyframes slideDownFadeIn {
+  0% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

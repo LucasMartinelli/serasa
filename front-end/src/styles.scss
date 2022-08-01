@@ -6,6 +6,7 @@ html,
 body {
   height: 100%;
   background-color: #f8f8f8;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -46,24 +47,83 @@ a {
   background: #e63888;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: clamp(0.5rem, 3vw, 1rem) clamp(1rem, 5vw, 2rem);
-}
-
-.cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
 .page-wrapper {
   position: absolute;
   width: calc(100vw - 80px - clamp(30px, 10vw, 600px));
-  min-height: calc(100vh - 90px - clamp(30px, 10vw, 600px));
+  min-height: calc(100vh - 70px - clamp(30px, 10vw, 600px));
+  padding-bottom: 48px;
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+
+    height: 36px;
+    margin-top: -32px;
+    margin-bottom: 24px;
+    opacity: 0.7;
+    transition: 500ms ease all;
+    animation: fadeInBread 0.5s ease both;
+    user-select: none;
+    .mobile,
+    .desktop {
+      align-items: center;
+      height: 36px;
+    }
+    .material-icons-outlined {
+      transition: 500ms ease all;
+      animation: fadeInBreadIcon 0.3s ease forwards;
+      opacity: 0.4;
+      user-select: none;
+    }
+
+    button {
+      padding: 0 8px !important;
+      border-radius: 18px;
+      transition: 300ms ease all;
+      user-select: none;
+      min-width: 0 !important;
+
+      .mat-button-wrapper {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+      }
+      .material-icons-outlined {
+        font-size: 18px;
+        transition: 300ms ease all;
+      }
+      &:hover {
+        opacity: 1 !important;
+        padding: 0 12px !important;
+        .material-icons-outlined {
+          opacity: 1;
+        }
+      }
+    }
+    button.pageBtn {
+      animation: fadeInBreadBtn 0.3s ease backwards;
+    }
+    button.subPageBtn {
+      opacity: 0.6;
+      animation: fadeInBreadBtn2 0.3s ease both;
+    }
+
+    &:hover {
+      opacity: 1;
+      .material-icons-outlined {
+        opacity: 0.7;
+      }
+    }
+
+    .home {
+      opacity: 1 !important;
+      animation: none;
+    }
+  }
 
   .basePage {
     height: 100%;
     padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 32px);
-    padding-bottom: 120px;
+
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 2px 5px -3px rgba(0, 0, 0, 0.33),
@@ -73,7 +133,7 @@ a {
       display: flex;
       justify-content: flex-end;
       &__add-btn {
-        padding: 7px 32px;
+        padding: 7px 42px;
         border-radius: 25px;
         font-weight: 500;
         letter-spacing: 0.5px;
@@ -82,7 +142,14 @@ a {
 
     table {
       width: 100%;
-
+      border-radius: 4px;
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        background: transparent;
+      }
       .mat-chip-list-wrapper {
         gap: 8px;
         margin: 0 !important;
@@ -104,7 +171,6 @@ a {
       animation: titleIconFadeIn 0.23s ease both;
       animation-delay: 600ms;
       margin-right: 4px;
-      transform: translate(0, 2px);
       color: #aaa;
     }
   }
@@ -138,7 +204,7 @@ a {
     opacity: 0;
   }
   100% {
-    transform: scale(1) translate(0, 4px);
+    transform: scale(1) translate(0, 2px);
     opacity: 1;
   }
 }

@@ -1,59 +1,48 @@
 <div class="page-wrapper">
+  <nav aria-label="breadcrumb" class="breadcrumb">
+    <button mat-button style="opacity: 0.6" class="subPageBtn" disabled>
+      <span class="material-icons-outlined home"> home </span>
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button mat-button color="primary" class="pageBtn">
+      Atuação
+      <span *ngIf="showAddForm" [@fade]="showAddForm"> (Cadastro) </span>
+    </button>
+  </nav>
+
   <h1 class="pageTitle">
     <span class="material-icons-outlined"> place </span>
-    Atuação
+    Locais de Atuação
   </h1>
   <section class="basePage">
-    <article class="btn-row">
-      <button
-        mat-flat-button
-        color="primary"
-        class="btn-row__add-btn"
-        (click)="openDialog()"
-      >
-        Cadastrar Área de Atuação
-      </button>
-    </article>
+    <ng-container *ngIf="actuations.length > 0; else emptyState">
+      <table mat-table [dataSource]="actuations!" class="mat-elevation-z1">
+        <ng-container matColumnDef="regiao">
+          <th mat-header-cell *matHeaderCellDef>Região</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.regiao }}
+          </td>
+        </ng-container>
 
-    <ng-container *ngIf="actuations">
-      <ng-container *ngIf="actuations.length > 0">
-        <table mat-table [dataSource]="actuations!" class="mat-elevation-z1">
-          <ng-container matColumnDef="regiao">
-            <th mat-header-cell *matHeaderCellDef>Região</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.regiao }}
-            </td>
-          </ng-container>
+        <ng-container matColumnDef="estados">
+          <th mat-header-cell *matHeaderCellDef class="estadosCol">Estados</th>
+          <td mat-cell *matCellDef="let element" class="estadosCol">
+            <mat-chip-list
+              style="display: flex; align-items: baseline; gap: 8px"
+            >
+              <mat-chip *ngFor="let estado of element.estados">
+                {{ estado }}
+              </mat-chip>
+            </mat-chip-list>
+          </td>
+        </ng-container>
 
-          <ng-container matColumnDef="estados">
-            <th mat-header-cell *matHeaderCellDef class="estadosCol">
-              Estados
-            </th>
-            <td mat-cell *matCellDef="let element" class="estadosCol">
-              <mat-chip-list
-                style="display: flex; align-items: baseline; gap: 8px"
-              >
-                <mat-chip *ngFor="let estado of element.estados">
-                  {{ estado }}
-                </mat-chip>
-              </mat-chip-list>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-        <!-- <mat-paginator
-        [length]="totalElements"
-        [pageSize]="pageSize"
-        [pageIndex]="currentPage"
-        (page)="pageEvent = getProducts($event.pageIndex)"
-        aria-label="Select page"
-      >
-      </mat-paginator> -->
-      </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </ng-container>
+    <ng-template #emptyState>
       <article
-        *ngIf="actuations.length == 0"
         style="
           display: flex;
           justify-content: center;
@@ -72,8 +61,22 @@
           Não há áreas de atuação cadastradas
         </h3>
       </article>
-    </ng-container>
+    </ng-template>
+    <mat-divider *ngIf="showAddForm"></mat-divider>
+    <article class="btn-row" *ngIf="!showAddForm">
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-row__add-btn"
+        (click)="openDialog()"
+      >
+        Cadastrar Nova Área de Atuação
+      </button>
+    </article>
 
-    <app-actuation-add-dialog></app-actuation-add-dialog>
+    <app-actuation-add-dialog
+      *ngIf="showAddForm"
+      (closeDialog)="changeAddFormVisibility($event)"
+    ></app-actuation-add-dialog>
   </section>
 </div>

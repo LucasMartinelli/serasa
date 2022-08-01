@@ -32,22 +32,22 @@
     <button
       mat-button
       [ngClass]="{ openStateBtn: !openState }"
-      [routerLink]="['/vendedores']"
-      routerLinkActive="menuList__btn--active"
-      (click)="changeOpenStateDesktop($event)"
-    >
-      <span class="material-icons-outlined"> people </span>
-      Vendedores
-    </button>
-    <button
-      mat-button
-      [ngClass]="{ openStateBtn: !openState }"
       [routerLink]="['/atuacao']"
       routerLinkActive="menuList__btn--active"
       (click)="changeOpenStateDesktop($event)"
     >
       <span class="material-icons-outlined"> place </span>
       Atuação
+    </button>
+    <button
+      mat-button
+      [ngClass]="{ openStateBtn: !openState }"
+      [routerLink]="['/vendedores']"
+      routerLinkActive="menuList__btn--active"
+      (click)="changeOpenStateDesktop($event)"
+    >
+      <span class="material-icons-outlined"> people </span>
+      Vendedores
     </button>
   </div>
 </nav>

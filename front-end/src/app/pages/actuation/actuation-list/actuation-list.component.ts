@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActuationAddDialogComponent } from '../actuation-add-dialog/actuation-add-dialog.component';
+import { IActuationResponse } from 'src/app/shared/interfaces/responses/IActuationResponse.interface';
+import { fade } from 'src/assets/animations/fade';
 import { ActuationService } from '../services/actuation.service';
 
 @Component({
   selector: 'app-actuation-list',
   templateUrl: './actuation-list.component.html',
   styleUrls: ['./actuation-list.component.scss'],
+  animations: [fade],
 })
 export class ActuationListComponent implements OnInit {
-  actuations: any[] = [];
+  actuations: IActuationResponse[] = [];
+  showAddForm: boolean = false;
   displayedColumns: string[] = ['regiao', 'estados'];
 
   constructor(
@@ -30,5 +33,14 @@ export class ActuationListComponent implements OnInit {
     });
   }
 
-  openDialog() {}
+  openDialog() {
+    this.showAddForm = true;
+  }
+
+  changeAddFormVisibility(event: [boolean, boolean]) {
+    this.showAddForm = event[0];
+    if (event[1] === true) {
+      this.getActuations();
+    }
+  }
 }

@@ -20,6 +20,7 @@
     justify-content: space-between;
     .logoContainer {
       height: 70px;
+      position: relative;
       .logoIcon {
         width: 38px;
         margin-left: 4px;
@@ -30,6 +31,7 @@
         width: 120px;
         opacity: 0;
         transition: 100ms all ease;
+        animation: fadeIn 200ms ease both;
       }
     }
 
@@ -185,4 +187,13 @@
 .mobileOpenState {
   left: -260px !important;
   opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
