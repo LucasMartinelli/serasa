@@ -7,6 +7,9 @@ import java.util.List;
 
 public class GetAllSellerResponseDTO {
 
+
+
+    private Long id;
     private String nome;
     private String telefone;
     private Integer idade;
@@ -15,11 +18,20 @@ public class GetAllSellerResponseDTO {
     private List<String> estados;
 
     public GetAllSellerResponseDTO(Seller seller) {
+        this.id = seller.getId();
         this.nome = seller.getNome();
         this.telefone = seller.getTelefone();
         this.idade = seller.getIdade();
         this.cidade = seller.getCidade();
         this.estado = seller.getEstado();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

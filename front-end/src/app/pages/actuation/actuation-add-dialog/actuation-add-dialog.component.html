@@ -1,22 +1,25 @@
 <section class="actuation-add mat-elevation-z1">
-  <h3>Nova Área de Atuação</h3>
+  <h3>Nova Região de Atuação</h3>
   <form [formGroup]="actuationForm">
     <article class="row">
       <mat-form-field appearance="outline" class="region-input">
         <mat-label>Região</mat-label>
         <input type="text" matInput formControlName="regiao" />
-        <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error> -->
+        <mat-error *ngIf="actuationForm.hasError('required', 'regiao')">
+          Campo obrigatório
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="state-input">
         <mat-label>Estados</mat-label>
         <mat-select formControlName="estados" multiple>
-          <mat-option *ngFor="let estado of estados" [value]="estado.value">{{
-            estado.viewValue
-          }}</mat-option>
+          <mat-option *ngFor="let estado of estados" [value]="estado.value"
+            >{{ estado.viewValue }} ({{ estado.value }})</mat-option
+          >
         </mat-select>
+        <mat-error *ngIf="actuationForm.hasError('required', 'estados')">
+          Campo obrigatório, selecione ao menos 1 estado
+        </mat-error>
       </mat-form-field>
     </article>
 

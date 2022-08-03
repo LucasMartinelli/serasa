@@ -25,7 +25,7 @@ export class ActuationService {
         }),
         catchError((error) => {
           this.snackBar.open(
-            'Não foi possível obter os dados das áreas de atuação. Entre em contato com o Administrador.',
+            'Não foi possível obter os dados das Regiões de Atuação. Entre em contato com o Administrador.',
             '',
             {
               duration: 2300,
@@ -43,14 +43,14 @@ export class ActuationService {
       .post<IActuationResponse>(`${environment.apiUrl}/atuacao`, actuation)
       .pipe(
         map((response) => {
-          this.snackBar.open('Área de atuação salva com sucesso.', '', {
+          this.snackBar.open('Região de Atuação salva com sucesso.', '', {
             duration: 2300,
           });
           return response;
         }),
         catchError((error) => {
           this.snackBar.open(
-            'Não foi possível salvar a área de atuação. Entre em contato com o Administrador.',
+            'Não foi possível salvar a Região de Atuação. Entre em contato com o Administrador.',
             '',
             {
               duration: 2300,

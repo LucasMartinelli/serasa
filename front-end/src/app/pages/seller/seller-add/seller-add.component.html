@@ -1,3 +1,190 @@
-<p>
-  seller-add works!
-</p>
+<div class="page-wrapper">
+  <nav aria-label="breadcrumb" class="breadcrumb">
+    <button mat-button style="opacity: 0.6" class="subPageBtn" disabled>
+      <span class="material-icons-outlined home"> home </span>
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button
+      mat-button
+      color="primary"
+      class="subPageBtn"
+      routerLink="/vendedores"
+    >
+      Vendedores
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button mat-button color="primary" class="pageBtn">Cadastro</button>
+  </nav>
+
+  <h1 class="pageTitle">
+    <span class="material-icons-outlined"> people </span>
+    Novo Vendedor
+  </h1>
+  <section class="basePage">
+    <h3>Preencha abaixo os dados do vendedor:</h3>
+    <ng-container *ngIf="sellerForm">
+      <form [formGroup]="sellerForm">
+        <fieldset>
+          <legend>Dados Pessoais:</legend>
+          <article class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="nome"
+                minlength="3"
+                maxlength="64"
+                autofocus
+              />
+              <mat-error *ngIf="sellerForm.hasError('required', 'nome')">
+                Campo obrigatório
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  sellerForm.hasError('minlength', 'nome') ||
+                  sellerForm.hasError('maxlength', 'nome')
+                "
+              >
+                Por favor, informe o nome do vendedor corretamente
+              </mat-error>
+            </mat-form-field>
+          </article>
+          <article class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Telefone</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="telefone"
+                mask="(00) 00000-0000"
+              />
+              <mat-error *ngIf="sellerForm.hasError('required', 'telefone')">
+                Campo obrigatório
+              </mat-error>
+              <mat-error *ngIf="sellerForm.hasError('mask', 'telefone')">
+                Por favor, informe o telefone do vendedor corretamente
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Idade</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="idade"
+                min="18"
+                max="70"
+              />
+              <mat-error *ngIf="sellerForm.hasError('required', 'idade')">
+                Campo obrigatório
+              </mat-error>
+              <mat-error *ngIf="sellerForm.hasError('min', 'idade')">
+                Idade mínima: 18 anos
+              </mat-error>
+              <mat-error *ngIf="sellerForm.hasError('max', 'idade')">
+                Idade máxima: 70 anos
+              </mat-error>
+            </mat-form-field>
+          </article>
+          <article class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Cidade</mat-label>
+              <input
+                type="text"
+                matInput
+                formControlName="cidade"
+                minlength="3"
+                maxlength="64"
+              />
+              <mat-error *ngIf="sellerForm.hasError('required', 'cidade')">
+                Campo obrigatório
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  sellerForm.hasError('minlength', 'cidade') ||
+                  sellerForm.hasError('maxlength', 'cidade')
+                "
+              >
+                Por favor, informe a cidade do vendedor corretamente
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Estado</mat-label>
+              <mat-select formControlName="estado">
+                <mat-option
+                  *ngFor="let estado of estados"
+                  [value]="estado.value"
+                  >{{ estado.viewValue }} ({{ estado.value }})</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="sellerForm.hasError('required', 'estado')">
+                Campo obrigatório
+              </mat-error>
+            </mat-form-field>
+          </article>
+        </fieldset>
+        <fieldset>
+          <legend>Região de Atuação:</legend>
+          <article
+            class="form-row"
+            *ngIf="actuations.length > 0; else noRegion"
+          >
+            <h4>Selecione a Região de Atuação do Vendedor:</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>Região</mat-label>
+              <mat-select formControlName="regiao">
+                <mat-option
+                  *ngFor="let actuation of actuations"
+                  [value]="actuation.regiao"
+                  >{{ actuation.regiao }}</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="sellerForm.hasError('required', 'regiao')">
+                Campo obrigatório
+              </mat-error>
+            </mat-form-field>
+          </article>
+          <ng-template #noRegion>
+            <article>
+              <article class="emptyState">
+                <h3>
+                  <span class="material-icons-outlined"> announcement </span>
+                  Não há Regiões de Atuação cadastradas
+                </h3>
+                <button
+                  mat-flat-button
+                  color="primary"
+                  type="button"
+                  (click)="navigateToActuations()"
+                >
+                  Ir para a página de Regiões de Atuação
+                </button>
+              </article>
+            </article>
+          </ng-template>
+        </fieldset>
+
+        <article class="btn-row">
+          <button
+            mat-flat-button
+            color="primary"
+            [disabled]="sellerForm.invalid || actuations.length === 0"
+            type="submit"
+            (click)="saveNewSeller()"
+          >
+            Salvar
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="backNavigationHandler()"
+          >
+            Cancelar
+          </button>
+        </article>
+      </form>
+    </ng-container>
+  </section>
+</div>

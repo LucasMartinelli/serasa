@@ -11,12 +11,12 @@ const routes: Routes = [
     component: SellerListComponent,
   },
   {
-    path: PageRoutes.ID,
-    component: SellerDetailComponent,
-  },
-  {
     path: PageRoutes.ADD,
     component: SellerAddComponent,
+  },
+  {
+    path: PageRoutes.ID,
+    component: SellerDetailComponent,
   },
 ];
 

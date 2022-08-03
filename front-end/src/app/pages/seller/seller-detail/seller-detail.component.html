@@ -1,3 +1,64 @@
-<p>
-  seller-detail works!
-</p>
+<div class="page-wrapper">
+  <nav aria-label="breadcrumb" class="breadcrumb">
+    <button mat-button style="opacity: 0.6" class="subPageBtn" disabled>
+      <span class="material-icons-outlined home"> home </span>
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button
+      mat-button
+      color="primary"
+      class="subPageBtn"
+      routerLink="/vendedores"
+    >
+      Vendedores
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button mat-button color="primary" class="pageBtn">
+      {{ seller.nome }}
+    </button>
+  </nav>
+
+  <h1 class="pageTitle">
+    <span class="material-icons-outlined"> people </span>
+    {{ seller.nome }}
+  </h1>
+  <section class="basePage">
+    <div class="sellerRow">
+      <aside class="left-container">
+        <div class="left-container__icon">
+          <span class="left-container__icon__initials">{{
+            getInitials(seller.nome)
+          }}</span>
+        </div>
+      </aside>
+      <mat-card>
+        <h3>Nome:</h3>
+        <p>{{ seller.nome }}</p>
+
+        <h3>Data da Inclusão:</h3>
+        <p>
+          {{ seller.dataInclusao | date: "fullDate" }}, às
+          {{ seller.dataInclusao | date: "mediumTime" }} horas
+        </p>
+
+        <mat-divider></mat-divider>
+
+        <h3>Estados em que atua:</h3>
+        <mat-chip-list>
+          <mat-chip *ngFor="let estado of seller.estados">
+            {{ getEstado(estado) }}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card>
+    </div>
+    <article class="btn-row">
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="backNavigationHandler()"
+      >
+        Voltar
+      </button>
+    </article>
+  </section>
+</div>

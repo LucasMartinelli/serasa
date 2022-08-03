@@ -12,7 +12,7 @@
 
   <h1 class="pageTitle">
     <span class="material-icons-outlined"> place </span>
-    Locais de Atuação
+    Regiões de Atuação
   </h1>
   <section class="basePage">
     <ng-container *ngIf="actuations.length > 0; else emptyState">
@@ -30,7 +30,10 @@
             <mat-chip-list
               style="display: flex; align-items: baseline; gap: 8px"
             >
-              <mat-chip *ngFor="let estado of element.estados">
+              <mat-chip
+                *ngFor="let estado of element.estados"
+                [matTooltip]="getEstado(estado)"
+              >
                 {{ estado }}
               </mat-chip>
             </mat-chip-list>
@@ -42,27 +45,16 @@
       </table>
     </ng-container>
     <ng-template #emptyState>
-      <article
-        style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100px;
-          opacity: 0.5;
-        "
-      >
-        <h3 style="margin: 0">
-          <span
-            class="material-icons-outlined"
-            style="transform: translateY(6px); margin-right: 5px; color: #777"
-          >
-            announcement
-          </span>
-          Não há áreas de atuação cadastradas
-        </h3>
-      </article>
+      <ng-container *ngIf="!showAddForm">
+        <article class="emptyState">
+          <h3 *ngIf="!showAddForm" [@fade]="!showAddForm">
+            <span class="material-icons-outlined"> announcement </span>
+            Não há Regiões de Atuação cadastradas
+          </h3>
+        </article>
+      </ng-container>
     </ng-template>
-    <mat-divider *ngIf="showAddForm"></mat-divider>
+    <mat-divider *ngIf="showAddForm && actuations.length > 0"></mat-divider>
     <article class="btn-row" *ngIf="!showAddForm">
       <button
         mat-flat-button
@@ -70,7 +62,7 @@
         class="btn-row__add-btn"
         (click)="openDialog()"
       >
-        Cadastrar Nova Área de Atuação
+        Cadastrar Nova Região de Atuação
       </button>
     </article>
 

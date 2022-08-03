@@ -1,0 +1,67 @@
+.basePage {
+  padding-left: 0;
+  .sellerRow {
+    display: flex;
+  }
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(150px, 20vw, 420px);
+    padding-top: clamp(42px, 5vw, 62px);
+    align-self: stretch;
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(70px, 10vw, 130px);
+      height: clamp(70px, 10vw, 130px);
+      border-radius: 50%;
+      background-color: #2073cf33;
+      box-sizing: border-box;
+
+      &__initials {
+        font-size: clamp(32px, 4vw, 50px);
+        letter-spacing: 0.5px;
+        color: #134680;
+        font-weight: 400;
+        opacity: 0.85;
+        user-select: none;
+      }
+    }
+  }
+
+  mat-card {
+    flex-grow: 1;
+    padding-bottom: 32px;
+    h3 {
+      font-weight: 500;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 21px !important;
+    }
+
+    mat-divider {
+      position: relative !important;
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .btn-row {
+    padding: 0;
+    padding-top: 32px;
+    padding-bottom: 0px !important;
+    gap: 16px;
+    button {
+      padding: 7px 42px;
+      border-radius: 8px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: 200ms all ease;
+    }
+  }
+}

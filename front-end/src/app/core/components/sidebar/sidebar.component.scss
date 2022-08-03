@@ -25,13 +25,10 @@
         width: 38px;
         margin-left: 4px;
         margin-top: 7.5px;
-        transition: 150ms all ease;
       }
       .logoText {
         width: 120px;
         opacity: 0;
-        transition: 100ms all ease;
-        animation: fadeIn 200ms ease both;
       }
     }
 
@@ -187,13 +184,4 @@
 .mobileOpenState {
   left: -260px !important;
   opacity: 0;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }

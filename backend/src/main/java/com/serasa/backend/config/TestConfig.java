@@ -17,9 +17,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Actuation atc1 = new Actuation("Sudeste", Arrays.asList("SP", "RJ"));
-        Actuation atc2 = new Actuation("Nordeste", Arrays.asList("BA", "PE"));
-
-        this.actuationRepository.saveAll(Arrays.asList(atc1, atc2));
+//        Actuation atc1 = new Actuation("Sudeste", Arrays.asList("SP", "RJ"));
+//        Actuation atc2 = new Actuation("Nordeste", Arrays.asList("BA", "PE"));
+//
+//        this.actuationRepository.saveAll(Arrays.asList(atc1, atc2));
     }
 }

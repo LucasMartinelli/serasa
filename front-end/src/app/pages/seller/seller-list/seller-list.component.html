@@ -1,7 +1,121 @@
 <div class="page-wrapper">
+  <nav aria-label="breadcrumb" class="breadcrumb">
+    <button mat-button style="opacity: 0.6" class="subPageBtn" disabled>
+      <span class="material-icons-outlined home"> home </span>
+    </button>
+    <span class="material-icons-outlined"> chevron_right </span>
+    <button mat-button color="primary" class="pageBtn">Vendedores</button>
+  </nav>
+
   <h1 class="pageTitle">
     <span class="material-icons-outlined"> people </span>
     Vendedores
   </h1>
-  <section class="basePage">teste</section>
+  <section class="basePage">
+    <article class="btn-row">
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-row__add-btn"
+        (click)="navigateToAddSeller()"
+      >
+        Cadastrar Novo Vendedor
+      </button>
+    </article>
+    <ng-container *ngIf="sellers.length > 0; else emptyState">
+      <table mat-table [dataSource]="sellers!" class="mat-elevation-z1">
+        <ng-container matColumnDef="iniciais">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="initials-icon"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            <div class="initials-icon__text">
+              {{ getInitials(element.nome) }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            {{ element.nome }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="idade">
+          <th mat-header-cell *matHeaderCellDef>Idade</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            {{ element.idade }} anos
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+          <th mat-header-cell *matHeaderCellDef>Telefone</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            {{ element.telefone | mask: "(00) 00000-0000" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cidade">
+          <th mat-header-cell *matHeaderCellDef>Cidade - UF</th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            {{ element.cidade }} - {{ element.estado }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estados">
+          <th mat-header-cell *matHeaderCellDef class="estadosCol">
+            Estados em que atua
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="estadosCol"
+            (click)="navigateToSellerDetails(element.id)"
+          >
+            <mat-chip-list
+              style="display: flex; align-items: baseline; gap: 8px"
+            >
+              <mat-chip
+                *ngFor="let estado of element.estados"
+                [matTooltip]="getEstado(estado)"
+              >
+                {{ estado }}
+              </mat-chip>
+            </mat-chip-list>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </ng-container>
+    <ng-template #emptyState>
+      <article class="emptyState">
+        <h3>
+          <span class="material-icons-outlined"> announcement </span>
+          Não há vendedores cadastrados
+        </h3>
+      </article>
+    </ng-template>
+  </section>
 </div>
