@@ -51,6 +51,8 @@ fieldset {
       border-radius: 25px;
       font-weight: 500;
       letter-spacing: 0.5px;
+      word-wrap: normal;
+      white-space: normal !important;
     }
   }
 }
