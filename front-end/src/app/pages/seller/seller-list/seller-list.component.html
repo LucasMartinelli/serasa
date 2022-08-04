@@ -25,12 +25,13 @@
     <ng-container *ngIf="sellers.length > 0; else emptyState">
       <table mat-table [dataSource]="sellers!" class="mat-elevation-z1">
         <ng-container matColumnDef="iniciais">
-          <th mat-header-cell *matHeaderCellDef></th>
+          <th mat-header-cell *matHeaderCellDef class="inicialCol"></th>
           <td
             mat-cell
             *matCellDef="let element"
             class="initials-icon"
             (click)="navigateToSellerDetails(element.id)"
+            class="inicialCol"
           >
             <div class="initials-icon__text">
               {{ getInitials(element.nome) }}
@@ -39,22 +40,24 @@
         </ng-container>
 
         <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <th mat-header-cell *matHeaderCellDef class="nomeCol">Nome</th>
           <td
             mat-cell
             *matCellDef="let element"
             (click)="navigateToSellerDetails(element.id)"
+            class="nomeCol"
           >
             {{ element.nome }}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="idade">
-          <th mat-header-cell *matHeaderCellDef>Idade</th>
+          <th mat-header-cell *matHeaderCellDef class="idadeCol">Idade</th>
           <td
             mat-cell
             *matCellDef="let element"
             (click)="navigateToSellerDetails(element.id)"
+            class="idadeCol"
           >
             {{ element.idade }} anos
           </td>
@@ -110,7 +113,7 @@
       </table>
     </ng-container>
     <ng-template #emptyState>
-      <article class="emptyState">
+      <article class="emptyState" *ngIf="!loading">
         <h3>
           <span class="material-icons-outlined"> announcement </span>
           Não há vendedores cadastrados

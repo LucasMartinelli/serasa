@@ -65,3 +65,17 @@
     }
   }
 }
+
+@media (max-width: 550px) {
+  .basePage {
+    padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 32px) !important;
+  }
+  .sellerRow {
+    flex-direction: column;
+    .left-container {
+      width: 100% !important;
+      padding-top: 16px;
+      padding-bottom: clamp(24px, 5vw, 62px);
+    }
+  }
+}

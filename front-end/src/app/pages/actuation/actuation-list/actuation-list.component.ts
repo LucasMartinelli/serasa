@@ -17,6 +17,7 @@ export class ActuationListComponent implements OnInit {
   estados: ISelect[] = new stateList().getUF();
   showAddForm: boolean = false;
   displayedColumns: string[] = ['regiao', 'estados'];
+  loading: boolean = true;
 
   constructor(
     private actuationService: ActuationService,
@@ -28,10 +29,12 @@ export class ActuationListComponent implements OnInit {
   }
 
   getActuations() {
+    this.loading = true;
     this.actuationService.getActuations().subscribe((actuations) => {
       if (actuations) {
         this.actuations = actuations;
       }
+      this.loading = false;
     });
   }
 

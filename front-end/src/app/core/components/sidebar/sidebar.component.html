@@ -1,3 +1,10 @@
+<section
+  class="overlay"
+  [ngClass]="{
+    display: openState
+  }"
+  (click)="changeOpenStateMobile()"
+></section>
 <nav
   class="sidebar"
   [ngClass]="{
@@ -51,3 +58,10 @@
     </button>
   </div>
 </nav>
+<button
+  mat-icon-button
+  (click)="changeOpenStateMobile()"
+  class="hamburguer-btn"
+>
+  <span class="material-icons-outlined"> menu </span>
+</button>

@@ -24,6 +24,7 @@ export class SellerListComponent implements OnInit {
     'cidade',
     'estados',
   ];
+  loading: boolean = true;
 
   constructor(
     private sellerService: SellerService,
@@ -36,10 +37,12 @@ export class SellerListComponent implements OnInit {
   }
 
   getSellers() {
+    this.loading = true;
     this.sellerService.getSellers().subscribe((sellers) => {
       if (sellers) {
         this.sellers = sellers;
       }
+      this.loading = false;
     });
   }
 

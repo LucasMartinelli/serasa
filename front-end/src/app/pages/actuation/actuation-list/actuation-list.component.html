@@ -45,7 +45,7 @@
       </table>
     </ng-container>
     <ng-template #emptyState>
-      <ng-container *ngIf="!showAddForm">
+      <ng-container *ngIf="!showAddForm && !loading">
         <article class="emptyState">
           <h3 *ngIf="!showAddForm" [@fade]="!showAddForm">
             <span class="material-icons-outlined"> announcement </span>

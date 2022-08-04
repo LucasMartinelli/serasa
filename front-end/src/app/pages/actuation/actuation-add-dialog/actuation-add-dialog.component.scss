@@ -14,7 +14,9 @@
   .row {
     width: 100%;
     display: flex;
-    gap: 16px;
+    gap: 0 16px;
+    flex-flow: wrap;
+
     .region-input {
       flex-grow: 1;
     }
@@ -25,7 +27,7 @@
   .btn-row {
     padding: 0;
     padding-top: 8px;
-
+    flex-flow: wrap;
     gap: 16px;
     button {
       padding: 7px 42px;
@@ -45,5 +47,13 @@
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn-row {
+    button {
+      flex-grow: 1 !important;
+    }
   }
 }

@@ -52,6 +52,7 @@
     margin-top: 24px;
     h3 {
       margin: 0;
+      text-align: center;
       span {
         transform: translateY(6px);
         margin-right: 5px;
@@ -69,5 +70,26 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .estadosCol {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .inicialCol {
+    display: none;
+  }
+  .nomeCol {
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .idadeCol {
+    display: none;
   }
 }

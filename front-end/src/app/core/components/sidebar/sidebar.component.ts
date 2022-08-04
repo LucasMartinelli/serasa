@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   openState = false;
   animationState = false;
-  mouseEventState = false;
 
   constructor() {}
 
@@ -26,5 +25,9 @@ export class SidebarComponent implements OnInit {
       this.animationState = true;
       setTimeout(() => (this.animationState = false), 150);
     }
+  }
+
+  changeOpenStateMobile() {
+    this.openState = !this.openState;
   }
 }
